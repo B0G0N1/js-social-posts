@@ -55,3 +55,60 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+// Recupera l'elemento del DOM con l'ID 'container', dove verranno inseriti i post.
+const container = document.getElementById('container');
+
+// Cicla su ogni oggetto nel array 'posts'
+posts.forEach(post => {
+
+    // Crea un nuovo elemento post chiamando la funzione 'createPost'
+    const postElement = createPost(post);
+
+    // Aggiungi il nuovo elemento post al contenitore
+    container.appendChild(postElement);
+});
+
+
+// Funzione che crea e restituisce un elemento 'post' HTML basato sui dati di un post
+// presi dall'Array
+function createPost(post) {
+
+    // Crea un div per il post e assegna la classe 'post'
+    const postDiv = document.createElement('div');
+    postDiv.className = 'post';
+
+    // Imposta l'HTML interno del div usando i dati del post
+    postDiv.innerHTML = `
+        <div class="post__header">
+            <div class="post-meta">                    
+                <div class="post-meta__icon">
+                    ${post.author.image ? `<img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">` : `<div class="profile-pic-default"><span>${post.author.name.charAt(0)}</span></div>`}                  
+                </div>
+                <div class="post-meta__data">
+                    <div class="post-meta__author">${post.author.name}</div>
+                    <div class="post-meta__time">${post.created}</div>
+                </div>                    
+            </div>
+        </div>
+        <div class="post__text">${post.content}</div>
+        <div class="post__image">
+            <img src="${post.media}" alt="">
+        </div>
+        <div class="post__footer">
+            <div class="likes js-likes">
+                <div class="likes__cta">
+                    <a class="like-button js-like-button" href="#" data-postid="${post.id}">
+                        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                        <span class="like-button__label">Mi Piace</span>
+                    </a>
+                </div>
+                <div class="likes__counter">
+                    Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
+                </div>
+            </div> 
+        </div>`;
+
+    // Restituisce il div del post creato
+    return postDiv;
+}
