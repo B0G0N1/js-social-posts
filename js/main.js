@@ -61,10 +61,7 @@ const container = document.getElementById('container');
 
 // Cicla su ogni oggetto nel array 'posts'
 posts.forEach(post => {
-
-    // Crea un nuovo elemento post chiamando la funzione 'createPost'
     const postElement = createPost(post);
-
     // Aggiungi il nuovo elemento post al contenitore
     container.appendChild(postElement);
 });
@@ -73,7 +70,6 @@ posts.forEach(post => {
 // Funzione che crea e restituisce un elemento 'post' HTML basato sui dati di un post
 // presi dall'Array
 function createPost(post) {
-
     // Crea un div per il post e assegna la classe 'post'
     const postDiv = document.createElement('div');
     postDiv.className = 'post';
@@ -112,3 +108,33 @@ function createPost(post) {
     // Restituisce il div del post creato
     return postDiv;
 }
+
+
+
+
+
+// Crea una variabile con tutti gli elementi 'Mi piace' del DOM
+const likeButtons = document.querySelectorAll('.js-like-button');
+
+// Aggiunge un listener click a ogni bottone con 'Mi Piace'
+likeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const postId = this.getAttribute('data-postid');
+        // Seleziona il contatore corrispondente all'ID del post
+        const likeCounter = document.getElementById(`like-counter-${postId}`);
+        let likeCount = parseInt(likeCounter.innerText);
+
+        // Controlla se il bottone ha già la classe 'like-button--liked'
+        if (this.classList.contains('like-button--liked')) {
+            this.classList.remove('like-button--liked');
+            likeCount--;
+        }
+        else {
+            this.classList.add('like-button--liked');
+            likeCount++;
+        }
+
+        // Aggiorna il testo del contatore dei 'Mi Piace'
+        likeCounter.innerText = likeCount;
+    });
+});
