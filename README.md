@@ -47,3 +47,15 @@ MILESTONE 2
 
 2. Creare un array per i post a cui è stato messo "Mi Piace":
     - Dichiarare una variabile `likedPosts` come lista vuota.
+
+3. Aggiungere un eventListener al click a ogni bottone "Mi Piace":
+    - Scorrere tutti i bottoni `js-like-button` e aggiungere un ascoltatore per l'evento `click`.
+
+4. Al click:
+    - Cambiare il colore del testo del bottone a rosso:
+        - Usare `classList.toggle` per aggiungere o rimuovere una classe che cambia il colore del bottone.
+    - Incrementare il contatore dei "Mi Piace" di 1:
+        - Selezionare il contatore relativo usando l'attributo `data-postid`.
+        - Incrementare il valore del contatore e aggiornare il testo nella pagina.
+    - Salvare l'ID del post nell'array `likedPosts` se non è già presente:
+        - Controllare se l'ID del post è già presente in `likedPosts` prima di aggiungerlo.
