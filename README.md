@@ -21,3 +21,29 @@ Prima scriviamo nei commenti la logica in italiano e poi traduciamo in codice.
 console.log() è nostro amico.
 Quando un pezzo di codice funziona, chiediamoci se possiamo scomporlo in funzioni più piccole.
 Buon lavoro!
+
+
+
+
+<!----------------------------
+    PSEUDOCODICE ESERCIZIO
+----------------------------->
+
+MILESTONE 1
+1. Eliminare il codice del post di esempio dalla pagina.
+
+2. Creare nuovi post dall'array `posts`:
+    - Utilizzare un ciclo FOR per scorrere l'array `posts`.
+    - Per ogni post, creare una nuova struttura HTML basata sul modello originale.
+
+3. Aggiungere i nuovi post al contenitore principale:
+    - Selezionare il contenitore principale con l'ID `container`.
+    - Usare `appendChild` per aggiungere i nuovi post al contenitore.
+
+MILESTONE 2
+1. Recuperare gli elementi dalla pagina:
+    - Selezionare tutti i bottoni "Mi Piace" con la classe `js-like-button` usando `querySelectorAll`.
+    - Selezionare i contatori dei "Mi Piace" usando gli ID dinamici `like-counter-{postId}`.
+
+2. Creare un array per i post a cui è stato messo "Mi Piace":
+    - Dichiarare una variabile `likedPosts` come lista vuota.
